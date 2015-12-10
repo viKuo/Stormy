@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
 
         getForecast();
         refresh();
-        Log.d(TAG, "Main UI code is running");
     }
 
     @OnClick(R.id.refreshImageView)
@@ -80,10 +79,18 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.hourlyButton)
     public void getHourlyForecast(){
-        Intent intent = new Intent (this, HourlyForecastActivity.class);
+        Intent intent = new Intent (this, GraphingActivity.class);
         intent.putExtra(HOURLY_FORECAST, mForecast.getHourly());
         startActivity(intent);
     }
+
+    @OnClick(R.id.locationTextView)
+    public void changeLocation() {
+        Toast.makeText(this, "clicked!", Toast.LENGTH_LONG).show();
+        // implement searching for location with google play services/google maps
+    }
+
+
 
     private void toggleVisibility() {
         if (mProgressBar.getVisibility() == View.INVISIBLE) {
@@ -117,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
                              @Override
                              public void onResponse(Response response) throws IOException {
                                  String jsonData = response.body().string();
-                                 Log.v(TAG, jsonData);
                                  try {
                                      if (response.isSuccessful()) {
                                          parseForecastData(jsonData);
@@ -164,7 +170,10 @@ public class MainActivity extends AppCompatActivity {
             hourlyData[i].setSummary(hourlyObject.getString("summary"));
             hourlyData[i].setTemperature(hourlyObject.getDouble("temperature"));
             hourlyData[i].setTime(hourlyObject.getLong("time"));
+            hourlyData[i].setPrecip((int) hourlyObject.getDouble("precipProbability")*100);
+            hourlyData[i].setHumidity(hourlyObject.getDouble("humidity"));
             hourlyData[i].setTimezone(timezone);
+
         }
         return hourlyData;
     }
@@ -192,7 +201,6 @@ public class MainActivity extends AppCompatActivity {
     private Current getCurrentWeather(String jsonData) throws JSONException {
         JSONObject forecast = new JSONObject(jsonData);
         String timezone = forecast.getString("timezone");
-        Log.i(TAG, timezone);
 
         //current data
         JSONObject currently = new JSONObject(jsonData).getJSONObject("currently");
@@ -208,7 +216,6 @@ public class MainActivity extends AppCompatActivity {
         JSONArray tempDifference = new JSONObject(jsonData).getJSONObject("hourly").getJSONArray("data");
         current.setTempRange(tempDifference);
 
-        Log.i(TAG, current.getFormattedTime());
         return current;
     }
 

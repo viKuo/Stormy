@@ -116,7 +116,6 @@ public class Current {
             formatter.setTimeZone(TimeZone.getTimeZone(mTimeZone));
             Date dateTime = new Date(getTime() * 1000);
             String timeString = formatter.format(dateTime);
-            Log.d("timestring", timeString);
             long midnightUnixTime = 0;
             try {
                 //turning current time into unix time
@@ -125,11 +124,9 @@ public class Current {
             } catch (ParseException e) {
                 Log.d("parsing", "parse exception", e);
             }
-            Log.i("unix timestamp", midnightUnixTime + "");
 
             //walk through array
             for (int i = 0; i <= 12; i++) {
-                Log.i("for loop", i + "");
                 try {
                     JSONObject hourlyData = tempDifference.getJSONObject(i);
                     long hourlyTime = hourlyData.getLong("time");
@@ -138,15 +135,12 @@ public class Current {
                         //hourly data is still of today
                         if (hourlyTemp > mHiTemp) {
                             mHiTemp = hourlyTemp;
-                            Log.i("hi temp", mHiTemp + "");
                         }
                         if (hourlyTemp < mLowTemp) {
                             mLowTemp = hourlyTemp;
-                            Log.i("low temp", mLowTemp + "");
                         }
                     } else {
                         //the data parsing is already passed today's date
-                        Log.i("breaking", "breaking out of for");
                         break;
                     }
                 } catch (JSONException e) {

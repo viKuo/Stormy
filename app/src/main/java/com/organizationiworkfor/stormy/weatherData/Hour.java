@@ -16,7 +16,27 @@ public class Hour implements Parcelable {
     private double mTemperature;
     private String mIcon;
     private String mTimezone;
+    private double mHumidity;
+    private int mPrecip;
     private boolean isCelsius = true;
+
+
+    public double getHumidity() {
+        return mHumidity;
+    }
+
+    public void setHumidity(double humidity) {
+        mHumidity = humidity;
+    }
+
+    public String getPrecip() {
+        return mPrecip*100+" %";
+    }
+
+    public void setPrecip(int precip) {
+        mPrecip = precip;
+    }
+
 
     public Hour() { }
 

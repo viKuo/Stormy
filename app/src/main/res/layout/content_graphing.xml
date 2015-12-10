@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.organizationiworkfor.stormy.UI.GraphingActivity"
+    tools:showIn="@layout/activity_graphing"
+    android:background="@drawable/bg_gradient">
+
+
+    <TextView
+        android:text="Hourly Weather Forecast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:textSize="28sp"
+        android:id="@+id/titleTextView"
+        android:textStyle="bold"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/titleTextView">
+
+        <View android:id="@+id/strut"
+              android:layout_width="0dp"
+              android:layout_height="0dp"
+              android:layout_centerVertical="true"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/top"
+            android:layout_above="@+id/strut"
+            >
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/chart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/bottom"
+            android:paddingTop="8dp"
+            android:layout_below="@+id/strut">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time: --"
+                android:id="@+id/timeTextView"
+                android:layout_centerHorizontal="true"
+                android:textSize="20sp"
+                android:textColor="#80ffffff"
+                android:layout_marginTop="15sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Summary: --"
+                android:id="@+id/sumTextView"
+                android:textColor="@android:color/white"
+                android:layout_below="@+id/timeTextView"
+                android:textSize="16sp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15sp"/>
+
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/line3"
+                android:layout_below="@+id/sumTextView"
+                android:layout_marginTop="15sp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/iconImageView"
+                    android:src="@drawable/snow"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tempTextView"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Temp:--"
+                    android:id="@+id/tempTextView"
+                    android:textColor="@android:color/white"
+                    android:textSize="42sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="\u00B0"
+                    android:textSize="42sp"
+                    android:textColor="#80FFFFFF"
+                    android:id="@+id/degTextView"
+                    android:layout_toRightOf="@+id/tempTextView"
+                    android:visibility="invisible"/>
+            </RelativeLayout>
+
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line3"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/linearLayout2"
+                android:layout_marginTop="20sp" >
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Humidity"
+                        android:id="@+id/humLabel"
+                        android:textColor="#80ffffff"
+                        android:gravity="center_horizontal" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="--"
+                        android:id="@+id/humValue"
+                        android:textColor="@android:color/white"
+                        android:gravity="center_horizontal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="RAIN/SNOW?"
+                        android:id="@+id/precipLabel"
+                        android:textColor="#80ffffff"
+                        android:gravity="center_horizontal" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="--"
+                        android:id="@+id/precipValue"
+                        android:textColor="@android:color/white"
+                        android:gravity="center_horizontal" />
+                </LinearLayout>
+            </LinearLayout>
+            </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

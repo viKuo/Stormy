@@ -46,7 +46,8 @@
         android:layout_centerHorizontal="true"
         android:textColor="@android:color/white"
         android:textSize="22sp"
-        android:paddingBottom="45dp" />
+        android:paddingBottom="45dp"
+        android:clickable="true"/>
 
     <ImageView
         android:layout_width="wrap_content"

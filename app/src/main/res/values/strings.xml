@@ -9,4 +9,5 @@
     <string name="title_activity_daily_forecast">DailyForecast</string>
     <string name="no_data_to_display">There is no data to display</string>
     <string name="title_activity_hourly_forecast">HourlyForecastActivity</string>
+    <string name="title_activity_graphing">GraphingActivity</string>
 </resources>
